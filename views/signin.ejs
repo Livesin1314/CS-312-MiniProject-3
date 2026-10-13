@@ -1,0 +1,45 @@
+<!--The start of the webpage for signin-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--The information of the device-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--The title of the webpage link-->
+    <title>Sign In</title>
+    <!--The stylesheet connected to the webpage-->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<!--The body section of the webpage-->
+<body>
+    <!--The main section of the webpage-->
+    <main>
+        <!--The title of the signin page-->
+        <h1>A Returning User</h1>
+        <!--When the person just created an account display message-->
+        <% if (registered) { %>
+            <p>Your account was created. You can now sign in and share your voice.</p>
+        <% } %>
+        <!--Checking for errors-->
+        <% if (error) { %>
+            <p role="alert"><%= error %></p>
+        <% } %>
+        <!--The section for inputing necessary information -->
+        <form action="/signin" method="POST">
+            <label for="user_id">Username</label>
+            <input id="user_id" name="user_id" required>
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required>
+
+            <button type="submit">Sign In</button>
+        </form>
+        <!--Section oto create an account-->
+        <p>Need an account? <a href="/signup" class="account-button signup-button" >Sign up</a></p>
+        <!--The button to head back to blog-->
+        <button>
+        <p><a href="/">Back to Blog</a></p>
+        </button>
+    </main>
+</body>
+</html>

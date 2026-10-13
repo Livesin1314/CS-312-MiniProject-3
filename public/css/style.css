@@ -1,0 +1,248 @@
+/*applying to all element*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/*The body of the webpage*/
+body {
+    font-family: Arial, sans-serif;
+    background: #b6b8f4;
+    color: #050505;
+    line-height: 1.6;
+}
+/*The header of the webpage*/
+header {
+    background: #360267fe;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 10px 5px;
+}
+/*The header 1 for the webpage*/
+header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1px;
+}
+/*The main for the webpage*/
+main {
+    width: 90%;
+    max-width: 900px;
+    margin: 20px auto;
+}
+/*The sectoin for the webpage*/
+section {
+    background: rgb(119, 119, 120);
+    padding: 30px;
+    margin-bottom: 25px;
+    border-radius: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+/*The header 2 for the webpage*/
+h2 {
+    margin-bottom: 20px;
+}
+/*The label for the webpage for input*/
+label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+/*styles for both input boxes and textarea*/
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+textarea {
+    resize: vertical;
+}
+/*The button styles*/
+button,
+.edit-button,
+.cancel-button {
+    display: inline-block;
+    padding: 7px 20px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+/*The button styles*/
+button {
+    background: #000000;
+    color: rgb(255, 251, 251);
+}
+/*The button hover*/
+button:hover {
+    opacity: 3;
+}
+/*The h2 of the inside posts*/
+.posts h2 {
+    margin-bottom: 15px;
+}
+/*The indivual blog posts*/
+.post {
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 15px;
+    background: #ebebeb;
+}
+/*Styling the title of each blog*/
+.post h3 {
+    font-size: 2rem;
+    margin-bottom: 3px;
+}
+/*The styling of the information underneath each post*/
+.post-info {
+    color: #000000;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+}
+/*The style of the actual blog post content*/
+.post-content {
+    white-space: pre-wrap;
+    margin-bottom: 15px;
+}
+/*The styles for the area cotaining the edit and elete button*/
+.post-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+/*The styles for removing the default margin*/
+.post-actions form {
+    margin: 0;
+}
+/*The style for edit button*/
+.edit-button {
+    background: #0019fa;
+    color: rgb(255, 255, 255);
+}
+/*The style for delete button*/
+.delete-button {
+    background: rgb(243, 0, 0);
+}
+/*The style for the calcel button*/
+.cancel-button {
+    background: #00f514;
+    color: #ffffff;
+}
+/*The styles for containing from buttons*/
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+/*The styles for the message shown for no blog posts*/
+.empty-message {
+    color: #777;
+    text-align: center;
+    padding: 20px;
+}
+/*The style of the footers*/
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #777;
+}
+/*The area containgint he sign-in and sign-up buttons*/
+.account-links{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+/*The stles for the account buttons*/
+.account-button{
+    display:inline-block;
+    padding: 10px 22px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+/*The signin button*/
+.signin-button{
+    background-color: #0019fa;
+    color: white;
+}
+
+/*The sign in button when hovered*/
+.signin-button:hover{
+    background-color: #0000a8 ;
+}
+
+/*The signup button*/
+.signup-button{
+    background-color: #00a83b;
+    color: white;
+}
+
+/* The sign-up button when hovered over */
+.signup-button:hover {
+    background-color: #007a2b;
+}
+
+/* Mobile responsiveness of different styles*/
+@media (max-width: 600px) {
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    main {
+        width: 95%;
+        margin: 20px auto;
+    }
+
+    section {
+        padding: 18px;
+    }
+
+    .post-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .post-actions a,
+    .post-actions button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .form-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .form-buttons button,
+    .cancel-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .account-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .account-button {
+        width: 100%;
+        max-width: 250px;
+        text-align: center;
+    }
+
+}

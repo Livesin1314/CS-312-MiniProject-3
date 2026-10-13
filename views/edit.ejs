@@ -1,0 +1,78 @@
+<!--Starting the page-->
+<!DOCTYPE html>
+<html lang="en">
+<!--Creating the head of the page-->
+<head>
+    <!--Getting the viewing of the device-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Creating the edit post-->
+    <title>Edit Post</title>
+    <!--Getting the stylesheet for the styles-->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<!--Creating the body-->
+<body>
+<!--Another header for editing the post-->
+<header>
+    <h1>Edit your blog</h1>
+    <p>Change your idea if needed</p>
+</header>
+
+<main>
+    <!--The Section class for edit-post-->
+    <section class="edit-post">
+
+        <form
+            action="/posts/<%= post.id %>/edit"
+            method="POST"
+        >
+            <!--Show the creator without allowing ownership to be changed-->
+            <p>
+                Posted by <strong><%= post.creator %></strong>
+            </p>
+
+            <!--The part for blog title-->
+            <label for="title">Blog Title</label>
+            <!--Creating the text input for blog title-->
+            <input
+                type="text"
+                id="title"
+                name="title"
+                value="<%= post.title %>"
+                maxlength="255"
+                required
+            >
+
+            <!--The Part for the blog content-->
+            <label for="content">Blog Content</label>
+            <!--The text input for blog content-->
+            <textarea
+                id="content"
+                name="content"
+                rows="10"
+                required
+            ><%= post.content %></textarea>
+
+            <!--Creating the buttons for saving changes or cancel-->
+            <div class="form-buttons">
+
+                <button type="submit">
+                    Save Changes
+                </button>
+
+                <a href="/" class="cancel-button">
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+</body>
+</html>

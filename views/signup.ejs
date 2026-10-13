@@ -1,0 +1,44 @@
+<!--The start of the webpage for signing up-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--The information to get of the device used-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--The title for the webpage link-->
+    <title>Sign Up</title>
+    <!--The style sheet connected to the webpage-->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<!--The body section -->
+<body>
+    <!--The main section-->
+    <main>
+        <!--The title of the header-->
+        <h1>Create an Account</h1>
+        <!--The error message if an error occurs-->
+        <% if (error) { %>
+            <p role="alert"><%= error %></p>
+        <% } %>
+        <!--The for section for information to signup-->
+        <form action="/signup" method="POST">
+            <label for="user_id">Username</label>
+            <input id="user_id" name="user_id" required>
+
+            <label for="name">Name</label>
+            <input id="name" name="name" required>
+
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" required>
+
+            <button type="submit">Sign Up</button>
+        </form>
+        <!--The section to click for signin if already have an account-->
+        <p>Already have an account? <a href="/signin" class="account-button signin-button">Sign in</a></p>
+        <!--The button section to go back to blog-->
+        <button>
+        <p><a href="/">Back to Blog</a></p>
+        </button>
+    </main>
+</body>
+</html>

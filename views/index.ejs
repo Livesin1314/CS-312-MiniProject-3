@@ -1,0 +1,145 @@
+<html lang = "en">
+    <!--Creating the Head-->
+   <head>
+    <!--Getting the information for the device-->
+      <meta charset = "UTF-8">
+      <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
+      <!--Having the title for the page-->
+      <title>Sharing Your Ideas</title>
+      <!--Getting the styles from the stylesheet-->
+      <link rel = "stylesheet" href="/css/style.css">
+   </head>
+<body>
+<header>
+    <!--The title of the webpage-->
+    <h1>Share Your Mind</h1>
+    <p>Let your voice be heard by everyone</p>
+
+    <!--Showing the account options based on the signed-in user-->
+    <nav>
+        <!--Checking if the user has an account-->
+        <% if (currentUser) { %>
+            <!--Giving a message if they are returning-->
+            <p>Welcome Back, <strong><%= currentUser.name %></strong>!</p>
+            <!--Giving a logout option while signed in-->
+            <form action="/logout" method="POST">
+                <button type="submit">Sign Out</button>
+            </form>
+            <!--If not, give the optiono to sign in and sign up-->
+        <% } else { %>
+            <!--The button to signin-->
+            <a href="/signin" class = "account-button signin-button">
+                Returning User
+            </a>
+            |
+            <!--The signup button-->
+            <a href="/signup" class = "account-button signup-button">
+                Create an account
+            </a>
+        <% } %>
+    </nav>
+</header>
+
+<main>
+    <!--The section for create post and checking if user is signed in-->
+    <% if (currentUser) { %>
+    <section class="create-post">
+        <h2>Create a New Post Here</h2>
+        <!--Telling the browser where to post-->
+        <form action="/posts" method="POST">
+
+            <!--The creator name comes from the signed-in account-->
+            <!--describing the blog title-->
+            <label for="title">Blog Title</label>
+            <!--The text input for blog title-->
+            <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Enter your blog title here..."
+                maxlength="255"
+                required
+            >
+            <!--Describing for Blog Content-->
+            <label for="content">Blog Content</label>
+            <!--The Text input for blog content-->
+            <textarea
+                id="content"
+                name="content"
+                rows="6"
+                placeholder="Write your blog here..."
+                required
+            ></textarea>
+            <!--The button that submits the post-->
+            <button type="submit">Publish Post</button>
+        </form>
+    </section>
+    <!--Showing another signin buttono if they haven't yet-->
+    <% } else { %>
+        <p><a href="/signin" class="account-button signin-button">Sign in</a> to create your own blog posts.</p>
+    <% } %>
+
+    <!--The parts the display the posted blogs-->
+    <section class="posts">
+        <!--The recent blogs sectiono-->
+        <h2>Other's recent Post</h2>
+        <!--A conditional statement whether the posts are empty-->
+        <% if (posts.length === 0) { %>
+            <p class="empty-message">
+                There are No Posts. Start the great beginining.
+            </p>
+        <% } %>
+        <!--A loop that goes through all the posts-->
+        <% posts.forEach(post => { %>
+            <!--The section for displaying the information in posted post-->
+            <article class="post">
+                <!--Getting the information from the sql table-->
+                <h3><%= post.title %></h3>
+                <p class="post-info">
+                    By <strong><%= post.creator %></strong>
+                    · <%= new Date(post.date).toLocaleString() %>
+                </p>
+                <p class="post-content">
+                    <%= post.content %>
+                </p>
+                <!--The section for the edit and delete and checking if the user matches the id-->
+                <% if (currentUser && currentUser.user_id === post.creator_user_id) { %>
+                <div class="post-actions">
+                    <!--The edit button section-->
+                    <a
+                        href="/posts/<%= post.id %>/edit"
+                        class="edit-button"
+                    >
+                        Edit
+                    </a>
+                    <!--The delete button section-->
+                    <form
+                        action="/posts/<%= post.id %>/delete"
+                        method="POST"
+                    >
+                        <button
+                            type="submit"
+                            class="delete-button"
+                            onclick="return confirm('Are you sure you want to delete this post?')"
+                        >
+                            Delete
+                        </button>
+                    </form>
+
+                </div>
+                <% } %>
+
+            </article>
+        <!--Ending of the loop-->
+        <% }); %>
+
+    </section>
+
+</main>
+<!--The footer of the webpage-->
+<footer>
+    <p>CS-312 Mini Project 3</p>
+</footer>
+
+</body>
+</html>
